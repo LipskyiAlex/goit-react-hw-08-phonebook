@@ -7,6 +7,7 @@ import { selectContacts } from 'redux/selectors';
 import { addContact } from 'redux/operations';
 import Notiflix from 'notiflix';
 
+
 const schema = yup.object().shape({
   name: yup.string().min(3).max(32).required(),
   phone: yup.string().min(3).required(),

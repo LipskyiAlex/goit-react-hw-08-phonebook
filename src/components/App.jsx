@@ -1,33 +1,43 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Input from './input/Input';
-import Contacts from './contacts/contacts';
-import Filter from './filter/filter';
-import { MainContainer, MainTitle, SecondaryTitle,Span } from './App.styled';
-import {selectError, selectLoading } from 'redux/selectors';
-import { fetchContacts } from 'redux/operations';
+import React from 'react';
+
+import { Routes, Route } from 'react-router-dom';
+
+import { MainContainer } from './App.styled';
+
+import AppAppBar from './appBar/AppBar';
+import Contacts from '../pages/Contacts';
+import Home from '../pages/Home';
+import Login from '../pages/Login';
 
 const App = () => {
-  
-  const dispatch = useDispatch();
-  const isLoading = useSelector(selectLoading);
-  const error = useSelector(selectError);
-
-  useEffect(() => {
-    
-    dispatch(fetchContacts());
-
-  },[dispatch])
-
   return (
     <MainContainer>
-      <MainTitle>Phonebo<Span>ok</Span></MainTitle>
-      <Input/>
-      <SecondaryTitle>Contacts</SecondaryTitle>
-      <Filter />
-      {isLoading && <p>Loading contacts ... </p> }
-      {error && <p>{error}</p>}
-      <Contacts/>
+      <Routes>
+        <Route path="/" element={<AppAppBar />} >
+        <Route index element={<Home />} />
+        {/* <Route
+         path='/login'
+         element={
+          <RestrictedRoute redirectTo='/contacts' component={<LoginPage/>} />
+         }
+        />
+        <Route 
+        path='/register'
+        element={
+          <RestrictedRoute redirectTo='/contacts' component={<RegisterPage/>}/>
+        }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<Contacts/>} />
+          }
+        /> */}
+        </Route>
+        <Route path="/contacts" element={<Contacts />} />
+        <Route path='/login' element={<Login/>} />
+        {/* <Route path="*" element={<NotFound/>} /> */}
+      </Routes>
     </MainContainer>
   );
 };
