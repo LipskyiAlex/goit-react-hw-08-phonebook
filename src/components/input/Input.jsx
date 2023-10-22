@@ -3,8 +3,8 @@ import * as yup from 'yup';
 import { FormWrapper, FormInput, Button, Error } from './input.styled';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { selectContacts } from 'redux/selectors';
-import { addContact } from 'redux/operations';
+import { selectContacts } from 'redux/contacts/selectors';
+import { addContact } from 'redux/contacts/operations';
 import Notiflix from 'notiflix';
 
 

@@ -3,7 +3,7 @@ import { AiFillDelete } from 'react-icons/ai';
 import { FcBusinessContact } from 'react-icons/fc';
 import { BsTelephoneOutbound } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from "redux/operations";
+import { deleteContact } from "redux/contacts/operations";
 
 const ItemContact = ({name,phone,id}) => {
 

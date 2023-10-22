@@ -1,19 +1,18 @@
 import React from 'react';
 
 import { Routes, Route } from 'react-router-dom';
-
+import { routes } from 'routes';
 import { MainContainer } from './App.styled';
 
 import AppAppBar from './appBar/AppBar';
-import Contacts from '../pages/Contacts';
+import {Contacts, LoginPage, RegisterPage} from 'pages';
 import Home from '../pages/Home';
-import Login from '../pages/Login';
 
 const App = () => {
   return (
     <MainContainer>
       <Routes>
-        <Route path="/" element={<AppAppBar />} >
+        <Route path={routes.HOME} element={<AppAppBar />} >
         <Route index element={<Home />} />
         {/* <Route
          path='/login'
@@ -33,9 +32,11 @@ const App = () => {
             <PrivateRoute redirectTo="/login" component={<Contacts/>} />
           }
         /> */}
+       
+        <Route path={routes.CONTACTS} element={<Contacts />} />
+        <Route path={routes.LOGIN} element={<LoginPage/>} />
+        <Route path={routes.REGISTER} element={<RegisterPage/>} />
         </Route>
-        <Route path="/contacts" element={<Contacts />} />
-        <Route path='/login' element={<Login/>} />
         {/* <Route path="*" element={<NotFound/>} /> */}
       </Routes>
     </MainContainer>

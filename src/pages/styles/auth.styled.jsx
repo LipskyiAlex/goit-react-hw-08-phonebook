@@ -8,6 +8,8 @@ display: flex;
 flex-direction: column;
 align-items: center;
 background-color: #fff;
+padding-bottom: 20px;
+border-radius: 4px;
 `
 
 export const Header = styled.div`
