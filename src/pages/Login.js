@@ -1,31 +1,49 @@
 import loginImg from '../login.svg';
-import {Container, Header, Content, Image, Form, FormGroup, Input, Footer,Button} from './styles/auth.styled';
-
+import {Container, Header, Content, Image, Form, FormGroup, Input,Button} from './styles/auth.styled';
+import { logIn } from 'redux/auth';
+import { useDispatch } from 'react-redux';
 
 export const LoginPage = () => {
+
+  const dispatch = useDispatch();
+  const handleSubmit = (e) => {
+
+    e.preventDefault();
+
+    const {email, password} = e.target;
+
+      const userLogin = {
+        email: email.value,
+        password: password.value,
+      }
+      console.log(userLogin);
+     
+      dispatch(logIn(userLogin));
+      
+  }
     return  (
         <Container> 
         <Header>Login</Header>  
         <Content>   
-          <Image className="image">  
+          <Image >  
             <img src={loginImg} alt='login'/>
           </Image>
-          <Form className="form">
-            <FormGroup className="form-group">
-              <label htmlFor="username">Username</label>
-              <Input type="text" name="username" placeholder="username" />
+          <Form onSubmit={handleSubmit}>
+            <FormGroup >
+              <label htmlFor="email">Email</label>
+              <Input type="text" name="email" placeholder="email" />
             </FormGroup>
-            <FormGroup className="form-group">
+            <FormGroup >
               <label htmlFor="password">Password</label>
               <Input type="password" name="password" placeholder="password" />
             </FormGroup>
-          </Form>
-        </Content>
-        <Footer className="footer">
-          <Button type="button" className="btn">
+            <Button type="submit">
             Login
           </Button>
-        </Footer>
+          </Form>
+        </Content>
+      
+        
       </Container>
     )
 }

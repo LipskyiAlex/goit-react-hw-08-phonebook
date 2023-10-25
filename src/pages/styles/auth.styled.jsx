@@ -32,7 +32,7 @@ img {
 }
 `
 
-export const Form = styled.div`
+export const Form = styled.form`
 
     margin-top: 2em;
     display: flex;
@@ -75,11 +75,6 @@ margin-top: 6px;
             box-shadow: 0px 0px 12px 0.8px #3474dbb2;
           }
 
-`
-
-export const Footer = styled.div`
-
-margin-top: 3em;
 `
 
 export const Button = styled.button`

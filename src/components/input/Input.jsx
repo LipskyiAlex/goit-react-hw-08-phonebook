@@ -3,6 +3,7 @@ import * as yup from 'yup';
 import { FormWrapper, FormInput, Button, Error } from './input.styled';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+
 import { selectContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/operations';
 import Notiflix from 'notiflix';
@@ -13,7 +14,7 @@ const schema = yup.object().shape({
   phone: yup.string().min(3).required(),
 });
 
-const Input = () => {
+export const Input = () => {
 
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
@@ -63,4 +64,3 @@ const Input = () => {
   );
 };
 
-export default Input;

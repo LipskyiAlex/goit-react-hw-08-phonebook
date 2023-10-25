@@ -4,7 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import { routes } from 'routes';
 import { MainContainer } from './App.styled';
 
-import AppAppBar from './appBar/AppBar';
+import { AppBar } from './appBar';
 import {Contacts, LoginPage, RegisterPage} from 'pages';
 import Home from '../pages/Home';
 
@@ -12,7 +12,7 @@ const App = () => {
   return (
     <MainContainer>
       <Routes>
-        <Route path={routes.HOME} element={<AppAppBar />} >
+        <Route path={routes.HOME} element={<AppBar />} >
         <Route index element={<Home />} />
         {/* <Route
          path='/login'

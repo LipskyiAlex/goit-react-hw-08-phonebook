@@ -5,7 +5,7 @@ import { BsTelephoneOutbound } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from "redux/contacts/operations";
 
-const ItemContact = ({name,phone,id}) => {
+export const ItemContact = ({name,phone,id}) => {
 
   const dispatch = useDispatch();
 
@@ -32,5 +32,3 @@ const ItemContact = ({name,phone,id}) => {
 )
 }
 
-
-export default ItemContact;

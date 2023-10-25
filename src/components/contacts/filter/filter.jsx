@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { setFilter } from "redux/contacts/filterSlice";
 
 
-const Filter = () => {
+export const Filter = () => {
 
   const dispatch = useDispatch();
   const handleInputChange = e => dispatch(setFilter(e.target.value));
@@ -25,4 +25,3 @@ const Filter = () => {
   );
 };
 
-export default Filter;

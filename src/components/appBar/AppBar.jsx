@@ -1,65 +1,44 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
-import AppBar from './AppAppBar';
+import Container from './Container';
 import Toolbar from './ToolBar';
-import { Outlet } from 'react-router-dom';
-
-const rightLink = {
-  fontSize: 16,
-  color: 'common.white',
-  ml: 3,
-};
-
-function AppAppBar() {
-  const handleClick = e => {
+import { Outlet, NavLink } from 'react-router-dom';
+import {useSelector } from 'react-redux/es/hooks/useSelector';
+import { useDispatch } from 'react-redux';
+import { logOut } from 'redux/auth/operations';
+import { selectUserName,selectIsLoggedIn } from 'redux/auth';
+export const AppBar = () =>  {
+   
+  const isLogged = useSelector(selectUserName);
+  const name = useSelector(selectIsLoggedIn);
     
-    e.preventDefault();
-    console.log('hello');
-  
-  };
+  const dispatch = useDispatch();
+   
+  const handleClick = () => {
+
+    dispatch(logOut())
+  }
 
   return (
     <div>
-      <AppBar position="fixed">
+      <Container position="fixed">
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <Box sx={{ flex: 1 }} />
-          <Link
-            variant="h6"
-            underline="none"
-            color="inherit"
-            href="/"
-            sx={{ fontSize: 22 }}
-          >
-            {'Home'}
-          </Link>
+          <NavLink to='/'>Home</NavLink>
+          {isLogged &&<NavLink to='/contacts'>Contacts</NavLink> }
+          
           <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
-            <Link
-              color="inherit"
-              variant="h6"
-              underline="none"
-              href="/"
-              onClick={handleClick}
-              sx={rightLink}
-            >
-              {'Sign In'}
-            </Link>
-            <Link
-              variant="h6"
-              underline="none"
-              href="/"
-              onClick={handleClick}
-              sx={{ ...rightLink, color: 'secondary.main' }}
-            >
-              {'Sign Up'}
-            </Link>
+            {!isLogged && <NavLink to='/login'>Sign In</NavLink>}
+            {!isLogged && <NavLink to='/register'>Sign Up</NavLink>}
+            {isLogged && <p>Hello {name}!</p>}
+            {isLogged &&  <button type='button' onClick={handleClick}>Log out</button>}
           </Box>
         </Toolbar>
-      </AppBar>
+      </Container>
       <Toolbar />
-      <Outlet/>
+      <Outlet />
     </div>
   );
 }
 
-export default AppAppBar;
+
