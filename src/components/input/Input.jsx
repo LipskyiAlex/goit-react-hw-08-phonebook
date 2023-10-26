@@ -11,7 +11,7 @@ import Notiflix from 'notiflix';
 
 const schema = yup.object().shape({
   name: yup.string().min(3).max(32).required(),
-  phone: yup.string().min(3).required(),
+  number: yup.string().min(3).required(),
 });
 
 export const Input = () => {
@@ -20,7 +20,7 @@ export const Input = () => {
   const contacts = useSelector(selectContacts);
   const initialValues = {
     name: '',
-    phone: '',
+    number: '',
   };
 
   const handleFormSubmit = (values, { resetForm }) => {
@@ -53,11 +53,11 @@ export const Input = () => {
         <Error name="name" component="div" />
         <FormInput
           type="tel"
-          name="phone"
-          placeholder="phone"
+          name="number"
+          placeholder="number"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
         />
-        <Error name="phone" component="div" />
+        <Error name="number" component="div" />
         <Button type="submit">Add to contacts</Button>
       </FormWrapper>
     </Formik>

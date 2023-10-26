@@ -9,8 +9,8 @@ import { logOut } from 'redux/auth/operations';
 import { selectUserName,selectIsLoggedIn } from 'redux/auth';
 export const AppBar = () =>  {
    
-  const isLogged = useSelector(selectUserName);
-  const name = useSelector(selectIsLoggedIn);
+  const isLogged = useSelector(selectIsLoggedIn);
+  const name = useSelector(selectUserName);
     
   const dispatch = useDispatch();
    
