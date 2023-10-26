@@ -5,7 +5,7 @@ import { BsTelephoneOutbound } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from "redux/contacts/operations";
 
-export const ItemContact = ({name,phone,id}) => {
+export const ItemContact = ({name,number,id}) => {
 
   const dispatch = useDispatch();
 
@@ -23,7 +23,7 @@ export const ItemContact = ({name,phone,id}) => {
 </Wrapper>
 <Wrapper>
   <BsTelephoneOutbound size={20} />
-  <Tel>{phone}</Tel>
+  <Tel>{number}</Tel>
 </Wrapper>
 <Delete role="button" aria-label="Delete" onClick={() => handleContactDelete(id)}>
   <AiFillDelete size={20} />

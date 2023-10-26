@@ -3,7 +3,7 @@ import {Container, Header, Content, Image, Form, FormGroup, Input,Button} from '
 import { logIn } from 'redux/auth';
 import { useDispatch } from 'react-redux';
 
-export const LoginPage = () => {
+const LoginPage = () => {
 
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
@@ -48,3 +48,4 @@ export const LoginPage = () => {
     )
 }
 
+export default LoginPage;

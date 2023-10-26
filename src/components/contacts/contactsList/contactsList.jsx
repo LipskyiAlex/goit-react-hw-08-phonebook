@@ -12,9 +12,9 @@ export const ContactsList = () => {
         {filtredContacts.length === 0 && (
           <EmptyList>There aren't contacts yet. Let's add somebody.</EmptyList>
         )}
-        {filtredContacts.map(({ id, name, phone }) => (
+        {filtredContacts.map(({ id, name, number }) => (
           <Item key={id}>
-            <ItemContact name={name} phone={phone} id={id} />
+            <ItemContact name={name} number={number} id={id} />
           </Item>
         ))}
       </List>

@@ -14,7 +14,7 @@ import {
 
 
 
-export const RegisterPage = () => {
+const RegisterPage = () => {
 
   const dispatch = useDispatch();
   const handleSubmit = e => {
@@ -73,3 +73,6 @@ export const RegisterPage = () => {
     </Container>
   );
 };
+
+
+export default RegisterPage;

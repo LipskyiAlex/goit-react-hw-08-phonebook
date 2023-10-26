@@ -9,7 +9,7 @@ import { ContactsList } from 'components/contacts/contactsList';
 import { fetchContacts } from 'redux/contacts';
 
 
-export const Contacts = () => {
+const Contacts = () => {
 
       const dispatch = useDispatch();
       const isLoading = useSelector(selectLoading);
@@ -35,4 +35,5 @@ export const Contacts = () => {
     )
 }
 
+export default Contacts;
 
