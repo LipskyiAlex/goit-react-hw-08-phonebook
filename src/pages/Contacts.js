@@ -28,7 +28,7 @@ const Contacts = () => {
       <Input/>
       <SubTitle/>
       <Filter />
-      {isLoading && <p>Loading contacts ... </p> }
+      {isLoading && <p>Loading contacts...</p> }
       {error && <p>{error}</p>}
       <ContactsList/>
         </>
