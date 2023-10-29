@@ -2,41 +2,34 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Container from './Container';
 import Toolbar from './ToolBar';
-import { Outlet, NavLink } from 'react-router-dom';
+import { Suspense } from 'react';
+import { Outlet} from 'react-router-dom';
 import {useSelector } from 'react-redux/es/hooks/useSelector';
-import { useDispatch } from 'react-redux';
-import { logOut } from 'redux/auth/operations';
-import { selectUserName,selectIsLoggedIn } from 'redux/auth';
+import { selectIsLoggedIn } from 'redux/auth';
+import { Navigation } from './Navigation';
+import { AuthNav } from './AuthNav';
+import { UserMenu } from './userMenu';
+
 export const AppBar = () =>  {
    
   const isLogged = useSelector(selectIsLoggedIn);
-  const name = useSelector(selectUserName);
-    
-  const dispatch = useDispatch();
-   
-  const handleClick = () => {
-
-    dispatch(logOut())
-  }
 
   return (
     <div>
       <Container position="fixed">
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <Box sx={{ flex: 1 }} />
-          <NavLink to='/'>Home</NavLink>
-          {isLogged &&<NavLink to='/contacts'>Contacts</NavLink> }
-          
+          <Navigation/>
           <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
-            {!isLogged && <NavLink to='/login'>Sign In</NavLink>}
-            {!isLogged && <NavLink to='/register'>Sign Up</NavLink>}
-            {isLogged && <p>Hello {name}!</p>}
-            {isLogged &&  <button type='button' onClick={handleClick}>Log out</button>}
+             {isLogged ? <UserMenu/> : <AuthNav/>}
           </Box>
         </Toolbar>
       </Container>
       <Toolbar />
+      <Suspense fallback={<div>Loading...</div>}> 
       <Outlet />
+      </Suspense>
+   
     </div>
   );
 }
