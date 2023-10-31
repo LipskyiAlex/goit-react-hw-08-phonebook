@@ -11,7 +11,7 @@ position:relative;
   padding-bottom: 13px;
 
   &:before {
-    background-color: #7F00FF;
+    background-color: #1976D2;
     content: '';
     display: block;
     height: 3px;
@@ -20,7 +20,7 @@ position:relative;
   }
 
   &:after {
-    background-color: #7F00FF;
+    background-color: #1976D2;
     content: '';
     display: block;
   position:absolute; right:0; bottom:0;
@@ -32,7 +32,7 @@ position:relative;
 
 export const Span = styled.span`
 
-// color:  #4CAF50;
+ color:  #1976D2;
 
 `
 

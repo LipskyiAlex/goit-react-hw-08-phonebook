@@ -1,18 +1,28 @@
-import loginImg from '../login.svg';
-import { useDispatch } from 'react-redux';
+import * as React from 'react';
+import {Avatar, Button, CssBaseline,TextField,Link,Box,Typography,Container,Grid} from '@mui/material';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
 import { createUser } from 'redux/auth';
-import {
-  Container,
-  Header,
-  Content,
-  Image,
-  Input,
-  Button,
-  Form,
-  FormGroup,
-} from 'pages/styles/auth.styled';
+import { useDispatch } from 'react-redux';
 
 
+function Copyright(props) {
+  return (
+    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      {'Copyright © '}
+      <Link color="inherit" href="https://github.com/LipskyiAlex/goit-react-hw-08-phonebook" target='_blank' rel='noopener noreferrer'>
+      Lipskyi Alex
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
+
+// TODO remove, this demo shouldn't need to reset the theme.
+
+const defaultTheme = createTheme();
 
 const RegisterPage = () => {
 
@@ -35,44 +45,85 @@ const RegisterPage = () => {
   };
 
   return (
-    <Container>
-      <Header>Register</Header>
-      <Content>
-        <Image>
-          <img src={loginImg} alt="register" />
-        </Image>
-        <Form onSubmit={handleSubmit}>
-          <FormGroup>
-            <label htmlFor="name">Name</label>
-            <Input
-              type="text"
-              name="name"
-              placeholder="name"
+    <ThemeProvider theme={defaultTheme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign in
+          </Typography>
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <TextField
+              margin="normal"
+              required
+              fullWidth
               id="name"
+              label="Name"
+              name="Name"
+              autoComplete="name"
+              autoFocus
             />
-          </FormGroup>
-          <FormGroup>
-            <label htmlFor="email">Email</label>
-            <Input
-             type="text"
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
               name="email"
-               placeholder="email" id="email" />
-          </FormGroup>
-          <FormGroup>
-            <label htmlFor="password">Password</label>
-            <Input
-              type="text"
-              name="password"
-              placeholder="password"
-              id="password"
+              autoComplete="email"
+              autoFocus
             />
-          </FormGroup>
-          <Button type="submit">Register</Button>
-        </Form>
-      </Content>
-    </Container>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign Up
+            </Button>
+             <Grid container>
+              <Grid item>
+                <Typography>Already have an account?<Link href="/goit-react-hw-08-phonebook/login" variant="inherit">
+                  {" Sign In"}
+                </Link></Typography>
+                
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+        <Copyright sx={{ mt: 8, mb: 4 }} />
+      </Container>
+    </ThemeProvider>
   );
-};
-
+}
 
 export default RegisterPage;
+
+
+
+
+
+
+
+
+

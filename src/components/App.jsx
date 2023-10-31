@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RefreshUser, selectIsRefreshing } from 'redux/auth';
 import { RestrictedRoute } from 'RestrictedRoute';
 import { PrivateRoute } from 'PrivateRoute';
+import { Dna} from 'react-loader-spinner';
 
 const Home = lazy(() => import('../pages/Home'));
 const Contacts = lazy(() => import('../pages/Contacts'));
@@ -19,10 +20,18 @@ const App = () => {
 
   useEffect(() => {
     dispatch(RefreshUser());
-  }, []);
+  }, [dispatch]);
 
   return isRefreshing ? (
-    <b>Fetching user data... </b>
+    <Dna
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="dna-loading"
+            wrapperStyle={{color:'black',display:'flex', justifyContent: 'center',
+            alignItems:'center',margin: '0 auto', marginTop:'320px'}}
+            wrapperClass="dna-wrapper"
+          />
   ) : (
     <MainContainer>
       <Routes>
@@ -32,7 +41,7 @@ const App = () => {
           <Route path={routes.LOGIN} element={<RestrictedRoute component={<LoginPage/>} redirectTo='/contacts'/>} />
           <Route path={routes.REGISTER} element={<RestrictedRoute component={<RegisterPage/>} redirectTo='/contacts'/>} />
         </Route>
-        {/* <Route path="*" element={<NotFound/>} /> */}
+        <Route path="*" element={<Home/>}/>
       </Routes>
     </MainContainer>
   );
