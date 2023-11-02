@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Input } from 'components/input';
-import { Title, SubTitle } from 'components/contacts/Titles';
+import { Title} from 'components/contacts/Titles';
 import { Filter } from 'components/contacts/filter';
 import { selectError, selectLoading } from 'redux/contacts/selectors';
 import { ContactsList } from 'components/contacts/contactsList';
@@ -26,7 +26,6 @@ const Contacts = () => {
         <>
       <Title/>     
       <Input/>
-      <SubTitle/>
       <Filter />
       {isLoading && <p>Loading contacts...</p> }
       {error && <p>{error}</p>}

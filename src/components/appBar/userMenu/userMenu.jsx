@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth';
 import LogoutIcon from '@mui/icons-material/Logout';
 import IconButton from '@mui/material/IconButton';
-import { Typography,Container } from '@mui/material';
+import { Typography,Container} from '@mui/material';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
