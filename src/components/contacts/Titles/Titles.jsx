@@ -1,4 +1,4 @@
-import { MainTitle, SecondaryTitle, Span } from './Titles.styled';
+import { MainTitle, Span } from './Titles.styled';
 
 export const Title = () => {
   return (
@@ -6,8 +6,4 @@ export const Title = () => {
       Phonebo<Span>ok</Span>
     </MainTitle>
   );
-};
-
-export const SubTitle = () => {
-  return <SecondaryTitle>Contacts</SecondaryTitle>;
 };

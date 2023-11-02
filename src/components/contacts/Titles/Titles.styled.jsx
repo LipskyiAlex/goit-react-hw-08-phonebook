@@ -35,9 +35,3 @@ export const Span = styled.span`
  color:  #1976D2;
 
 `
-
-export const SecondaryTitle = styled.h1`
-  font-size: 32px;
-  font-weight: 600;
-  text-align: center;
-`;

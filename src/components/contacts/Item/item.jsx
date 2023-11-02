@@ -1,10 +1,9 @@
-import {Wrapper,Contact,Tel,Delete} from "./item.styled"
+import {Wrapper,Contact,Tel,Delete,Container} from "./item.styled"
 import { AiFillDelete } from 'react-icons/ai';
-import { FcBusinessContact } from 'react-icons/fc';
-import { BsTelephoneOutbound } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from "redux/contacts/operations";
-
+import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
+import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 export const ItemContact = ({name,number,id}) => {
 
   const dispatch = useDispatch();
@@ -16,19 +15,20 @@ export const ItemContact = ({name,number,id}) => {
 
  return (
    
-    <>
+    <Container>
 <Wrapper>
-  <FcBusinessContact size={20} />
+  <ContactPhoneIcon color='primary'/>
   <Contact>{name}</Contact>
 </Wrapper>
 <Wrapper>
-  <BsTelephoneOutbound size={20} />
+<PhoneAndroidIcon color='primary'/>
   <Tel>{number}</Tel>
 </Wrapper>
 <Delete role="button" aria-label="Delete" onClick={() => handleContactDelete(id)}>
+
   <AiFillDelete size={20} />
 </Delete>
-</>
+</Container>
 )
 }
 
