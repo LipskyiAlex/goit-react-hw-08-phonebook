@@ -39,6 +39,7 @@ export const Input = () => {
   return (
     <div>
       <form onSubmit={formik.handleSubmit} style={{ marginBottom: '10px' }}>
+  
         <TextField
           fullWidth
           id="name"
@@ -49,7 +50,7 @@ export const Input = () => {
           onBlur={formik.handleBlur}
           error={formik.touched.name && Boolean(formik.errors.name)}
           helperText={formik.touched.name && formik.errors.name}
-          sx={{ mb: 2 }}
+          sx={{ mb: 2, height:'78px' }}
         />
         <TextField
           fullWidth
@@ -62,7 +63,7 @@ export const Input = () => {
           onBlur={formik.handleBlur}
           error={formik.touched.number && Boolean(formik.errors.number)}
           helperText={formik.touched.number && formik.errors.number}
-          sx={{ mb: 2 }}
+          sx={{ mb: 2,height:'78px' }}
         />
         <Button color="primary" variant="contained" fullWidth type="submit">
           Add contact
